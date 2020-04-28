@@ -6,7 +6,27 @@
 
 
 body {
+  color: #f5b971;
+  font-family: Helvetica, sans-serif;
+  background-color: #efe9cc;
+}
 
+.title {
+  display:flex;
+  flex-direction: row;
+  font-size:1.2em;
+  transition: color 150ms ease-in;
+}
+
+.title:hover, .time:hover {
+  color: #85a392;
+}
+
+.logo {
+  margin-right: 10px;
+  display: block;
+  width: 32px;
+  height: 32px;
 }
 
 .page {
@@ -14,10 +34,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 85vh;
+  width: 100%;
 }
-
-
 
 .timers {
   display: flex;
@@ -26,26 +45,32 @@ body {
   align-items: center;
   max-width: 95vw;
   width: 100%;
-  font-size: 30px;
-  font-weight: 900;
   user-select: none;
 }
 
 .timer {
   width: 33%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
+.time {
+  font-size: 30px;
+  font-weight: 900;
+  transition: color 150ms ease-in;
+}
 .buttons-container {
   display:flex;
   flex-direction: row;
 }
 
-.button {
+.buttons-container .button {
   padding: 40px;
   margin: 20px;
-  background-size: 100%;
+}
 
+.button {
+  background-size: 100%;
   transition: transform 50ms ease-in;
 }
 
@@ -57,28 +82,157 @@ body {
   background-image: url(../images/play.svg);
 }
 
+.reset-button {
+  background-image: url(../images/refresh-cw.svg);
+}
+
 .pause-button {
   background-image: url(../images/pause.svg);
+}
+
+.options-button {
+  padding: 25px;
+  bottom: 5px;
+  background-image: url(../images/menu.svg);
+  position: relative;
+  z-index: 1;
 }
 
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position:relative;
+}
+
+.config-container {
+  background-color: #efe9cc;
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  height: 0;
+  transition: height 200ms ease-in;
+}
+
+
+
+
+
+
+.config {
+  height: 33%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.config div:last-of-type {
+  display:flex;
+
+}
+
+
+
+.up-button {
+  background-image: url(../images/chevron-up.svg);
+  padding: 28px;
+}
+
+.down-button {
+  background-image: url(../images/chevron-down.svg);
+  padding: 28px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  width: 90%;
+  margin-top: 20px;
+  border-bottom: 2px solid #f5b971;
+}
+
+.footer {
+  position: absolute;
+
+  border-top: 2px solid #f5b971;
+  padding-top: 10px;
+  width: 90%;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  bottom: 0;
+
+}
+
+.footer-notes {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer a {
+  color: #f5b971;
+  text-decoration: none;
+  transition: color 50ms ease-in;
+  cursor: pointer;
+}
+
+.footer a:hover {
+  color: #85a392;
 }
 
 
-.options {
-  height: 40px;
-  width: 40px;
-}
 
+
+
+.footer-notes div:last-child {
+  direction: rtl;
+}
+@media only screen and (max-width: 374px) {
+  .title {
+    padding-top: 0px;
+    padding-left: 0px;
+    font-size: 0.9em;
+  }
+  .options-button {
+    padding: 20px;
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+  .buttons-container .button {
+    padding: 30px;
+    margin: 20px;
+  }
+
+}
 @media only screen and (min-width: 500px) {
-  .timers {
+  .time {
     font-size: 55px;
+  }
+  .title {
+    padding-top: 14px;
+    padding-left: 14px;
+    font-size: 1.5em;
+  }
+  .options-button {
+    padding: 30px;
+    margin-top: 14px;
+    margin-right: 14px;
+  }
+  .logo {
+    margin-right: 10px;
+    width: 48px;
+    height: 48px;
   }
 }
