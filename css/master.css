@@ -48,6 +48,22 @@ body {
   user-select: none;
 }
 
+.pomodoro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer-type {
+  font-size: 24px;
+  transition: color 150ms ease-in;
+}
+
+.timer-type:hover {
+  color: #85a392;
+}
+
 .timer {
   width: 33%;
   display: flex;
@@ -55,7 +71,7 @@ body {
 }
 
 .time {
-  font-size: 30px;
+  font-size: 55px;
   font-weight: 900;
   transition: color 150ms ease-in;
 }
@@ -140,7 +156,6 @@ body {
 }
 
 
-
 .up-button {
   background-image: url(../images/chevron-up.svg);
   padding: 28px;
@@ -218,8 +233,14 @@ body {
 }
 @media only screen and (min-width: 500px) {
   .time {
-    font-size: 55px;
+    font-size: 150px;
   }
+
+  .up-button, .down-button {
+    padding: 72px;
+  }
+
+
   .title {
     padding-top: 14px;
     padding-left: 14px;
@@ -234,5 +255,11 @@ body {
     margin-right: 10px;
     width: 48px;
     height: 48px;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .time {
+    font-size: 500px;
   }
 }
