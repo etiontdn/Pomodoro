@@ -116,7 +116,7 @@ class PotatoTimer {
 
   play () {
     if (!this.running) {
-      this.timeLooper = window.setInterval(() => this.timeLoop(), 1);
+      this.timeLooper = window.setInterval(() => this.timeLoop(), 1000);
       this.running = true;
     }
   }
