@@ -74,7 +74,7 @@ class PotatoTimer {
     }
 
     if (this.current == "pomodoro") {
-      if (this.time == this.pomodoro) {
+      if (this.time > this.pomodoro) {
         this.breakCounter += 1;
         if (this.breakCounter == 4) {
           this.current = "longbreak";
