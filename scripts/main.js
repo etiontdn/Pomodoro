@@ -21,6 +21,7 @@ document.querySelector(".options-button").addEventListener("click", () => {
 });
 
 
+
 //Main functionality;
 
 class PotatoTimer {
@@ -41,6 +42,7 @@ class PotatoTimer {
   }
 
   updateToScreen () {
+
     if (this.current != this.screenCurrent.innerText.toLowerCase()) {
       this.screenCurrent.innerText = this.current.slice(0,1).toUpperCase() +
           this.current.slice(1);
@@ -54,6 +56,8 @@ class PotatoTimer {
     } else {
       this.screenTime.innerText = timerType - this.time + ":0"+this.timeSec;
     }
+
+    document.title = "("+this.screenTime.innerText+") PotatoTimer Pomodoro Technique";
   }
 
   resetTime () {
