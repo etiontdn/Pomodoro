@@ -86,7 +86,7 @@ class PotatoTimer {
       }
     }
 
-    if (this.current == "shortbreak") {
+    if (this.current > "shortbreak") {
       if (this.time == this.shortbreak) {
         this.current = "pomodoro"
         this.time = 0;
@@ -95,7 +95,7 @@ class PotatoTimer {
       }
     }
 
-    if (this.current == "longbreak") {
+    if (this.current > "longbreak") {
       if (this.time == this.longbreak) {
         this.current = "pomodoro"
         this.time = 0;
@@ -116,7 +116,7 @@ class PotatoTimer {
 
   play () {
     if (!this.running) {
-      this.timeLooper = window.setInterval(() => this.timeLoop(), 1000);
+      this.timeLooper = window.setInterval(() => this.timeLoop(), 1);
       this.running = true;
     }
   }
