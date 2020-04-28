@@ -161,7 +161,10 @@ for (let button of document.querySelectorAll(".down-button")) {
   let type = button.getAttribute("data-optiontype");
   let option = document.querySelector("."+type+"-option");
   button.addEventListener("click", () => {
-    option.innerText = Number(option.innerText) - 1;
+    let currentNum = Number(option.innerText);
+    if (currentNum > 1) {
+      option.innerText = currentNum - 1;
+    }
     potato.setConfig();
   });
 }
