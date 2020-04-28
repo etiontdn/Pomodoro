@@ -116,7 +116,7 @@ class PotatoTimer {
 
   play () {
     if (!this.running) {
-      this.timeLooper = window.setInterval(() => this.timeLoop(), 1);
+      this.timeLooper = window.setInterval(() => this.timeLoop(), 1000);
       this.running = true;
     }
   }
@@ -139,15 +139,29 @@ class PotatoTimer {
 let potato = new PotatoTimer (25, 5, 15, document.querySelector(".timer > .time"));
 
 
+//Buttons functionality
+
 document.querySelector(".pause-button").addEventListener("click",
     () => potato.pause());
 document.querySelector(".start-button").addEventListener("click",
     () => potato.play());
 document.querySelector(".reset-button").addEventListener("click",
     () => potato.resetTime());
-document.querySelector(".up-button").addEventListener("click",
-    () => {
-    });
-document.querySelector(".down-button").addEventListener("click",
-    () => {
-    });
+
+for (let button of document.querySelectorAll(".up-button")) {
+  let type = button.getAttribute("data-optiontype");
+  let option = document.querySelector("."+type+"-option");
+  button.addEventListener("click", () => {
+    option.innerText = Number(option.innerText) + 1;
+    potato.setConfig();
+  });
+}
+
+for (let button of document.querySelectorAll(".down-button")) {
+  let type = button.getAttribute("data-optiontype");
+  let option = document.querySelector("."+type+"-option");
+  button.addEventListener("click", () => {
+    option.innerText = Number(option.innerText) - 1;
+    potato.setConfig();
+  });
+}
