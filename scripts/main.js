@@ -86,8 +86,8 @@ class PotatoTimer {
       }
     }
 
-    if (this.current > "shortbreak") {
-      if (this.time == this.shortbreak) {
+    if (this.current == "shortbreak") {
+      if (this.time > this.shortbreak) {
         this.current = "pomodoro"
         this.time = 0;
         this.timeSec = 0;
@@ -95,8 +95,8 @@ class PotatoTimer {
       }
     }
 
-    if (this.current > "longbreak") {
-      if (this.time == this.longbreak) {
+    if (this.current == "longbreak") {
+      if (this.time > this.longbreak) {
         this.current = "pomodoro"
         this.time = 0;
         this.timeSec = 0;
