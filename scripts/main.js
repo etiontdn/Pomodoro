@@ -1,3 +1,10 @@
+let config = window.localStorage;
+let notificationsEnabled = false;
+if (config.getItem("notificationsEnabled")) {
+  notificationsEnabled = Boolean(config.getItem("notificationsEnabled"));
+}
+console.log(notificationsEnabled);
+
 //Configuration tab transitions
 
 document.querySelector(".config-container").style.height = "0";
@@ -21,6 +28,36 @@ document.querySelector(".options-button").addEventListener("click", () => {
 });
 
 
+//notifications functionality
+function showNotification (notifType) {
+  let notif = new Notification("PotatoTimer Pomodoro Technique", {
+    body: "Is time for a " + notifType + "!\nGreat Job!",
+    icon: "images/potato.svg",
+    tag: "PotatoTimer",
+    badge: "images/potato.svg",
+    vibrate: [200, 100, 200],
+  });
+  notif.onclick = () => potato.play();
+}
+
+function notificationExecute () {
+  if (window.Notification) {
+    if (Notification.permission === "granted") {
+      notificationsEnabled = true;
+      config.setItem("notificationsEnabled", "true");
+    } else if (Notification.permission === "default") {
+      Notification.requestPermission().then(() => {
+        if (Notification.permission === "granted") {
+          notificationsEnabled = true;
+          config.setItem("notificationsEnabled", "true");
+        } else {
+          notificationsEnabled = false;
+          config.setItem("notificationsEnabled", "false");
+        }
+      });
+    }
+  }
+}
 
 
 
@@ -90,6 +127,8 @@ class PotatoTimer {
         this.time = 0;
         this.timeSec = 0;
         this.sound.play();
+        this.pause();
+        showNotification(this.current);
       }
     }
 
@@ -99,6 +138,8 @@ class PotatoTimer {
         this.time = 0;
         this.timeSec = 0;
         this.sound.play();
+        this.pause();
+        showNotification(this.current);
       }
     }
 
@@ -108,6 +149,8 @@ class PotatoTimer {
         this.time = 0;
         this.timeSec = 0;
         this.sound.play();
+        this.pause();
+        showNotification(this.current);
       }
     }
 
@@ -175,26 +218,6 @@ for (let button of document.querySelectorAll(".down-button")) {
   });
 }
 
-
-
-//notifications functionality
-function showNotification () {
-  let notif = new Notification("PotatoTimer");
-}
-
-function notificationExecute () {
-  if (window.Notification) {
-    if (Notification.permission === "granted") {
-      showNotification()
-    } else if (Notification.permission === "default") {
-      Notification.requestPermission().then(() => {
-        if (Notification.permission === "granted") {
-          showNotification()
-        } else return false;
-      });
-    }
-  }
-}
 
 
 document.querySelector(".start-button").addEventListener("click",
