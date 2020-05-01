@@ -22,6 +22,9 @@ document.querySelector(".options-button").addEventListener("click", () => {
 
 
 
+
+
+
 //Main functionality;
 
 class PotatoTimer {
@@ -139,7 +142,6 @@ class PotatoTimer {
 }
 
 
-
 let potato = new PotatoTimer (25, 5, 15, document.querySelector(".timer > .time"));
 
 
@@ -172,3 +174,30 @@ for (let button of document.querySelectorAll(".down-button")) {
     potato.setConfig();
   });
 }
+
+
+
+//notifications functionality
+function showNotification () {
+  let notif = new Notification("PotatoTimer");
+}
+
+function notificationExecute () {
+  if (window.Notification) {
+    if (Notification.permission === "granted") {
+      showNotification()
+    } else if (Notification.permission === "default") {
+      Notification.requestPermission().then(() => {
+        if (Notification.permission === "granted") {
+          showNotification()
+        } else return false;
+      });
+    }
+  }
+}
+
+
+document.querySelector(".start-button").addEventListener("click",
+  () => {
+    notificationExecute();
+  });
